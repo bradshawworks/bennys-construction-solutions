@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny's Construction Solutions | Dothan, AL</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-black: #0a0a0a;
+            --surface-dark: #141414;
+            --surface-card: #1e1e1e;
+            --surface-light: #edf1ed;
+            --lime-muted: #58b847;
+            --lime-accent: #6ecf5d;
+            --text-white: #ffffff;
+            --text-dark: #121212;
+            --text-muted: #b8b8b8;
+            --border-dark: #2e2e2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 10, 0.96);
+            border-bottom: 2px solid var(--lime-muted);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.15rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            color: var(--lime-accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--lime-accent);
+        }
+
+        /* Hero Section with House Background Image */
+        .hero {
+            background-image: linear-gradient(rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.88)), 
+                              url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 7.5rem 5%;
+            text-align: center;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.12;
+            max-width: 950px;
+            margin: 0 auto 1.35rem auto;
+            background: linear-gradient(135deg, #ffffff 25%, #8ce07c 65%, #58b847 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #dcdcdc;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--lime-accent);
+            color: var(--bg-black);
+            border: 2px solid var(--lime-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--lime-accent);
+        }
+
+        .btn-secondary {
+            background-color: rgba(10, 10, 10, 0.5);
+            color: var(--text-white);
+            border: 2px solid var(--text-white);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--lime-accent);
+            color: var(--lime-accent);
+        }
+
+        /* Section General - All Centered */
+        section {
+            padding: 5rem 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .underline {
+            height: 4px;
+            width: 60px;
+            background-color: var(--lime-muted);
+            margin: 0 auto 1rem auto;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Specialties Section - Light Background (Not Pure White) */
+        .services-wrapper {
+            background-color: var(--surface-light);
+            color: var(--text-dark);
+            border-bottom: 3px solid var(--lime-muted);
+        }
+
+        .services-wrapper .section-header h2 {
+            color: #0a0a0a;
+        }
+
+        .services-wrapper .section-header p {
+            color: #4a4a4a;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border: 1px solid #d5ddd5;
+            border-top: 4px solid var(--lime-muted);
+            padding: 2.25rem 2rem;
+            border-radius: 6px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background-color: rgba(88, 184, 71, 0.14);
+            color: #3d8e2f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            margin: 0 auto 1.25rem auto;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #0a0a0a;
+            font-weight: 800;
+        }
+
+        .service-card p {
+            color: #444444;
+            font-size: 0.98rem;
+            max-width: 400px;
+        }
+
+        /* Work & Services Showcase - Clean Visual Gallery */
+        .showcase-wrapper {
+            background-color: var(--surface-dark);
+            color: var(--text-white);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+
+        .showcase-item {
+            background-color: var(--surface-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--lime-muted);
+        }
+
+        .showcase-title-bar {
+            padding: 1.15rem 1rem;
+            background-color: #191919;
+            border-bottom: 2px solid var(--lime-muted);
+        }
+
+        .showcase-title-bar h4 {
+            font-size: 1.15rem;
+            color: var(--text-white);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .showcase-image-box {
+            height: 260px;
+            width: 100%;
+            overflow: hidden;
+            background-color: #0a0a0a;
+        }
+
+        .showcase-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .showcase-item:hover .showcase-image-box img {
+            transform: scale(1.04);
+        }
+
+        /* Contact Section with Masonry Background & Dark Overlay */
+        .contact-wrapper {
+            background-image: linear-gradient(rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.90)), 
+                              url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-top: 2px solid var(--lime-muted);
+        }
+
+        .contact-wrapper .section-header p {
+            color: #dcdcdc;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+        }
+
+        .contact-card {
+            background-color: rgba(24, 24, 24, 0.92);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-dark);
+            border-top: 5px solid var(--lime-muted);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-white);
+            line-height: 1.2;
+        }
+
+        .contact-role {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--lime-accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-divider {
+            width: 45px;
+            height: 2px;
+            background-color: var(--border-dark);
+            margin: 0 auto 1rem auto;
+        }
+
+        .contact-direct-info {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.75rem;
+            word-break: break-word;
+        }
+
+        .action-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+            width: 100%;
+        }
+
+        .action-btn {
+            padding: 0.85rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 2px solid var(--lime-muted);
+        }
+
+        .action-btn-solid {
+            background-color: var(--lime-accent);
+            color: var(--bg-black);
+            border-color: var(--lime-accent);
+        }
+
+        .action-btn-solid:hover {
+            background-color: var(--lime-muted);
+            border-color: var(--lime-muted);
+        }
+
+        .action-btn-outline {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            border-color: var(--lime-muted);
+        }
+
+        .action-btn-outline:hover {
+            background-color: rgba(110, 207, 93, 0.15);
+            color: var(--lime-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050505;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            padding: 2.5rem 5%;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--text-white);
+        }
+
+        footer span {
+            color: var(--lime-accent);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 850px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 0.85rem;
+            }
+            nav ul {
+                gap: 1.25rem;
+            }
+            .services-grid,
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-card {
+                padding: 2rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header (Company Name Only) -->
+    <header>
+        <div class="logo">Benny's <span>Construction</span> Solutions</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#showcase">Showcase</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Residential & Commercial Construction</h1>
+        <p>Dependable craftsmanship in Masonry, Painting, Carpentry, and Electrical work across Dothan and the Wiregrass region.</p>
+        <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">Contact Us</a>
+            <a href="#showcase" class="btn btn-secondary">View Our Work</a>
+        </div>
+    </div>
+
+    <!-- Core Services Section (Light Background, 2 Columns) -->
+    <div class="services-wrapper" id="services">
+        <section>
+            <div class="section-header">
+                <h2>Our Specialties</h2>
+                <div class="underline"></div>
+                <p>Four core trades under one roof—delivering seamless execution from structural foundations to final finishes.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Masonry -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="3" y1="15" x2="21" y2="15"/>
+                            <line x1="12" y1="3" x2="12" y2="9"/>
+                            <line x1="8" y1="9" x2="8" y2="15"/>
+                            <line x1="16" y1="9" x2="16" y2="15"/>
+                            <line x1="12" y1="15" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Masonry</h3>
+                    <p>Brickwork, block walls, stone veneers, concrete flatwork, patios, walkways, and structural tuckpointing built to withstand Alabama weather.</p>
+                </div>
+
+                <!-- Painting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 3v4c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V3h14z"/>
+                            <path d="M10 9v4l2 2v6"/>
+                        </svg>
+                    </div>
+                    <h3>Painting</h3>
+                    <p>Crisp interior and exterior painting, thorough surface preparation, drywall patching, staining, and protective coatings for homes and businesses.</p>
+                </div>
+
+                <!-- Carpentry -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Carpentry</h3>
+                    <p>Custom framing, decks, porches, trim and crown molding, door and window installations, cabinetry, and structural wood repairs.</p>
+                </div>
+
+                <!-- Electrical -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Electrical</h3>
+                    <p>Safe troubleshooting, panel upgrades, indoor/outdoor lighting installations, ceiling fans, outlets, switches, and remodel wiring.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Work & Services Showcase (Simple Title + Clean Photo Only) -->
+    <div class="showcase-wrapper" id="showcase">
+        <section>
+            <div class="section-header">
+                <h2>Project & Service Showcase</h2>
+                <div class="underline"></div>
+                <p>A closer look at the craftsmanship we bring to properties across Dothan and the surrounding Wiregrass communities.</p>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- Showcase Item 1: Masonry -->
+                <div class="showcase-item">
+                    <div class="showcase-title-bar">
+                        <h4>Custom Brick & Stone Work</h4>
+                    </div>
+                    <div class="showcase-image-box">
+                        <!-- Replace src with your client's masonry photo -->
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=900&q=80" alt="Custom Brick and Stone Work">
+                    </div>
+                </div>
+
+                <!-- Showcase Item 2: Carpentry -->
+                <div class="showcase-item">
+                    <div class="showcase-title-bar">
+                        <h4>Decks, Framing & Finish Trim</h4>
+                    </div>
+                    <div class="showcase-image-box">
+                        <!-- Replace src with your client's carpentry photo -->
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Decks, Framing and Finish Trim">
+                    </div>
+                </div>
+
+                <!-- Showcase Item 3: Painting -->
+                <div class="showcase-item">
+                    <div class="showcase-title-bar">
+                        <h4>Full Interior & Exterior Repaints</h4>
+                    </div>
+                    <div class="showcase-image-box">
+                        <!-- Replace src with your client's painting photo -->
+                        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=900&q=80" alt="Full Interior and Exterior Repaints">
+                    </div>
+                </div>
+
+                <!-- Showcase Item 4: Electrical -->
+                <div class="showcase-item">
+                    <div class="showcase-title-bar">
+                        <h4>Lighting, Panels & Remodel Wiring</h4>
+                    </div>
+                    <div class="showcase-image-box">
+                        <!-- Replace src with your client's electrical photo -->
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80" alt="Lighting, Panels and Remodel Wiring">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section (Masonry Background with Dark Overlay) -->
+    <div class="contact-wrapper" id="contact">
+        <section>
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <div class="underline"></div>
+                <p>Ready to discuss your project in Dothan, Enterprise, Ozark, Headland, or surrounding areas? Reach out directly or save a contact card to your phone.</p>
+            </div>
+
+            <div class="contacts-grid">
+                <!-- Contact 1: Benny Lopez (Owner) -->
+                <div class="contact-card">
+                    <h3>Benny Lopez</h3>
+                    <div class="contact-role">Owner</div>
+                    <div class="contact-divider"></div>
+                    <div class="contact-direct-info">(334) 648-2442 • Bernilopez929@gmail.com</div>
+
+                    <div class="action-buttons-grid">
+                        <a href="tel:3346482442" class="action-btn action-btn-solid">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Call
+                        </a>
+
+                        <a href="sms:3346482442" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            Text
+                        </a>
+
+                        <a href="mailto:Bernilopez929@gmail.com" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Email
+                        </a>
+
+                        <button type="button" onclick="downloadVCard('benny')" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            Save Contact
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact 2: Gabriel Palacios (Project Manager) -->
+                <div class="contact-card">
+                    <h3>Gabriel Palacios</h3>
+                    <div class="contact-role">Project Manager</div>
+                    <div class="contact-divider"></div>
+                    <div class="contact-direct-info">(770) 647-6906 • ciozelec21@gmail.com</div>
+
+                    <div class="action-buttons-grid">
+                        <a href="tel:7706476906" class="action-btn action-btn-solid">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Call
+                        </a>
+
+                        <a href="sms:7706476906" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            Text
+                        </a>
+
+                        <a href="mailto:ciozelec21@gmail.com" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Email
+                        </a>
+
+                        <button type="button" onclick="downloadVCard('gabriel')" class="action-btn action-btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            Save Contact
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Benny's <span>Construction</span> Solutions</strong> • Dothan, Alabama & Surrounding Areas</p>
+        <p style="margin-top: 0.5rem;">Website by Bradshawworks.com</p>
+    </footer>
+
+    <!-- Script to generate & download individual .vcf Contact Cards -->
+    <script>
+        function downloadVCard(person) {
+            const contacts = {
+                benny: {
+                    firstName: 'Benny',
+                    lastName: 'Lopez',
+                    fullName: 'Benny Lopez',
+                    title: 'Owner',
+                    phone: '334-648-2442',
+                    email: 'Bernilopez929@gmail.com',
+                    filename: 'Benny_Lopez_Bennys_Construction.vcf'
+                },
+                gabriel: {
+                    firstName: 'Gabriel',
+                    lastName: 'Palacios',
+                    fullName: 'Gabriel Palacios',
+                    title: 'Project Manager',
+                    phone: '770-647-6906',
+                    email: 'ciozelec21@gmail.com',
+                    filename: 'Gabriel_Palacios_Bennys_Construction.vcf'
+                }
+            };
+
+            const c = contacts[person];
+            if (!c) return;
+
+            const vcard = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                `N:${c.lastName};${c.firstName};;;`,
+                `FN:${c.fullName}`,
+                'ORG:Benny\'s Construction Solutions',
+                `TITLE:${c.title}`,
+                `TEL;TYPE=WORK,VOICE:${c.phone}`,
+                `EMAIL;TYPE=PREF,INTERNET:${c.email}`,
+                'ADR;TYPE=WORK:;;Dothan;AL;;;USA',
+                'NOTE:Masonry, Painting, Carpentry, and Electrical Services in Dothan, AL and surrounding areas.',
+                'END:VCARD'
+            ].join('\n');
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', c.filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body>
+</html>
